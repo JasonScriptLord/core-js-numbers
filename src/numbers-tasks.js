@@ -260,8 +260,22 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index <= 0) {
+    return 0;
+  }
+  if (index === 1 || index === 2) {
+    return 1;
+  }
+  let num1 = 1;
+  let num2 = 1;
+  let result = null;
+  for (let i = 2; i < index; i += 1) {
+    result = num1 + num2;
+    num1 = num2;
+    num2 = result;
+  }
+  return result;
 }
 
 /**
@@ -313,8 +327,11 @@ function getSumOfDigits(num) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  for (let i = 0; 2 ** i <= num; i += 1) {
+    if (2 ** i === num) return true;
+  }
+  return false;
 }
 
 /**
@@ -467,8 +484,8 @@ function getFloatOnString(str) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  return Number.parseInt(str, base);
 }
 
 /**
